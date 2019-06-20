@@ -92,11 +92,15 @@
 			var dates = []
 			//记数
 			var numeration = 0;
-			//判断不能记录相同金额
+			//判断不能记录相同金额/不能多次点击
 			var alike = 0;
-			//更新
+			//更新记录
 			renewal()
-			//
+			
+			//调节滚动条位置
+			 adjust()
+			 
+			//更新记录
 			function renewal() {
 
 				//提取
@@ -106,22 +110,21 @@
 					//截取
 					var cut_out = get_date.indexOf(",")
 					if(cut_out == -1) {
-						//						console.log("走一")
+						//console.log("走一")
 						var html_ = '<li class="reco">记录</li>';
 						html_ += '<li>' + get_date + '</li>'
 						$('.datas ul').html(html_)
 						dates[0] = get_date;
 						numeration = 1;
 					} else {
-						//						console.log("走二")
+						//console.log("走二")
 
 						var html_ = '<li class="reco">记录</li>';
 						var cut_out = get_date.split(",")
-						//						console.log(cut_out)
+						//console.log(cut_out)
 						for(var i = 0; i < cut_out.length; i++) {
 							dates[i] = cut_out[i]
 							html_ += '<li>' + cut_out[i] + '</li>';
-
 						}
 						numeration = i;
 						$('.datas ul').html(html_)
@@ -159,47 +162,54 @@
 					localStorage.setItem("total_value", total_value);
 					numeration++;
 					$('.box2 .on1').siblings().remove()
+					
+					//调节滚动条位置
+					adjust()
+					//更新记录
 					renewal()
-					setTimeout(fun(), 1300)
+					//显示当前可用卡
+					usable_stuck()
 				}
 			})
 
-			var name1 = ["名字1", "名字2", "名字3", "名字4", "名字5"];
+			var name1 = ["招商", "兴业", "名字3", "交通", "广发"];
 
-			var myDate = new Date();
-//			var myDate = new Date("2019-06-15");
+//			var myDate = new Date();
+			var myDate = new Date("2019-06-13");
 
 			var days = myDate.getDate()
 			console.log(days)
 			setTimeout(function() {
 				if(days >= 3 && days <= 17) {
-					$('.box').append('<li>' + name1[0] + '</li>')
+					$('.box').append('<li style="background: red;color: #fff;">' + name1[0] + '</li>')
 				}
 			}, 100)
 			setTimeout(function() {
 				if(days >= 7 && days <= 20) {
-					$('.box').append('<li>' + name1[1] + '</li>')
+					$('.box').append('<li style="background: blue;color: #fff;">' + name1[1] + '</li>')
 				}
 			}, 400)
 			setTimeout(function() {
 				if(days >= 20 || days <= 4) {
-					$('.box').append('<li>' + name1[2] + '</li>')
+					$('.box').append('<li style="background: darkorange;color: #fff;">' + name1[2] + '</li>')
 				}
 			}, 700)
 			setTimeout(function() {
 				if(days >= 13 && days <= 27) {
-					$('.box').append('<li>' + name1[3] + '</li>')
+					$('.box').append('<li style="background: #ff0097;color: #fff;">' + name1[3] + '</li>')
 				}
 			}, 1000)
 			setTimeout(function() {
 				if(days >= 22 || days <= 5) {
-					$('.box').append('<li>' + name1[4] + '</li>')
+					$('.box').append('<li style="background: yellowgreen;color: #fff;">' + name1[4] + '</li>')
 				}
 			}, 1300)
-			setTimeout(fun,1300)
-
-			function fun() {
-				var total_value = localStorage.getItem("total_value")
+			
+				//显示当前可用卡
+			usable_stuck()
+			function usable_stuck(){
+				setTimeout(function(){
+					var total_value = localStorage.getItem("total_value")
 				console.log(total_value)
 				if(total_value != null) {
 					var lis = $('.box li').length;
@@ -222,7 +232,19 @@
 
 					}
 				}
+				},1300)
+				
 			}
+			//调节滚动条位置
+			function adjust(){
+				setTimeout(function(){
+				var dahei = $('.datas ul').height()
+				console.log(dahei,"333")
+				$('.datas').scrollTop(dahei) 
+				}, 0)
+			
+			}		
+			
 
 		})
 	</script>
