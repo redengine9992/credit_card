@@ -1,0 +1,181 @@
+*{margin: 0;padding: 0;box-sizing: border-box;}
+li{
+	list-style: none;
+}
+body{
+	font-size: .4rem;
+}
+.set_content{
+	position: relative;
+	max-width: 7.5rem;
+	height: 13.3rem;
+	margin: auto;
+	font-size: .40rem;
+	box-sizing: border-box;
+	/**/
+	border: 1px solid red;
+}
+.set{
+	width: 100%;
+	padding: 0 0.05rem ;
+	font-size: .3rem;
+	float: left;
+	/*background: green;*/
+}
+.set ul{
+	width: 100%;
+	height: .6rem;
+	margin-bottom: .1rem;
+}
+.set ul li{
+	width: 16%;
+	height: .6rem;
+	line-height: .6rem;
+	/*background: red;*/
+	float: left;
+	box-sizing: border-box;
+	border: 1px solid red;
+	margin-left: 0.04rem;
+	text-align: center;
+	
+}
+.set ul li:nth-of-type(1){
+	margin-left: 0;
+}
+/*数据框*/
+.set_box{
+	width: 100%;
+	max-height: 9rem;
+	overflow: hidden;
+	overflow-y: scroll;
+	/*background: yellow;*/
+}
+
+
+.suaa{
+	width: 2.2rem;
+    height: 0.6rem;
+    margin-left: 0.3rem;
+    background: deepskyblue;
+    border: none;
+    color: #fff;
+    font-size: .4rem;
+    
+}
+.increase{
+	position: absolute;
+    top: 9.8rem;
+    left: 0.5rem;
+
+}
+.count_html{
+	position: absolute;
+    top: 9.8rem;
+    left:4rem;
+}
+
+/*删除与否提示框*/
+.promptBox{
+	position: relative;
+	top: 36%;
+	left: 50%;
+	margin-left: -40%;
+	width: 80%;
+	height: 2rem;
+	background: red;
+	display: none;
+}
+.promptBox p{
+	width: 100%;
+	text-align: center;
+	color: #FFF;
+	position: absolute;
+	top: 0;
+}
+.set_okno{
+	width: 2rem;
+	height: .7rem;
+	background: #00bfff;
+	text-align: center;
+	line-height: .7rem;
+}
+.set_ok{
+	position: absolute;
+    bottom: 0;
+    left: 0.7rem;
+}
+.set_no{
+	position: absolute;
+	bottom: 0;
+	left: 3.4rem;
+}
+
+/*删除框颜色*/
+.rm_ba{
+	background: #ff0000;
+}
+
+
+
+
+
+
+
+/*设置窗*/
+
+.set_window{
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0,0,0,1);
+	display: none;
+}
+.set_input{
+	width: 7rem;
+	height: 3rem;
+	/*background: red;*/
+	margin: auto;
+}
+
+.set_input>input{
+    width: 2rem;
+    height: 0.7rem;
+    text-align: center;
+    line-height: .7rem;
+    font-size: .4rem;
+    float: left;
+    margin-left: .2rem;
+    margin-top: .2rem;
+}
+
+.addition{
+    width: 5.75rem;
+    height: 2rem;
+    /*background: red;*/
+    margin: 2rem auto;
+}
+.addition>input{
+    width: 2.2rem;
+    height: 0.9rem;
+    margin-left: 0.3rem;
+    background: deepskyblue;
+    border: none;
+    color: #fff;
+    font-size: .4rem;
+}
+
+.reminder{
+    width: 100%;
+    height: 0.6rem;
+    text-align: center;
+    /*background: green;*/
+    float: left;
+    margin-top: 0.2rem;
+    color: #fff;
+}
+
+
+
+

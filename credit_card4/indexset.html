@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>设置页面</title>
+		<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+		<link rel="stylesheet" type="text/css" href="css/set.css"/>
+		<script src="js/jquery-3.3.1.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/setRootRem750.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div class="set_content">
+			<div class="set">
+				<ul>
+					<li>名字</li>
+					<li>多少钱</li>
+					<li>已用</li>
+					<li>可用</li>
+					<li>应还</li>
+					<li>日期</li>
+				</ul>
+				<div class="set_box">
+					<!--<ul>
+						<li>名字</li>
+						<li>50000</li>
+						<li>50000</li>
+						<li>50000</li>
+						<li>50000</li>
+						<li>12.6</li>
+					</ul>-->
+					
+				</div>
+				
+				
+				
+				
+				
+			</div>
+			
+			<input type="button" class="increase suaa" value="增加数据" />
+			<input type="button" class="count_html suaa" value="计算页面" />
+			<!--删除与否提示框-->
+			<div class="promptBox">
+				<p>确认删除这条数据吗？</p>
+				<div class="set_okno set_ok">删除</div>
+				<div class="set_okno set_no">取消</div>
+			</div>
+			<!--设置窗-->
+			
+		</div>
+			<div class="set_window">
+				<div class="set_input">
+					<input type="text" onkeyup="key_uplift()" name="" class="nill_" id="nane_" value="" placeholder="名称"/>
+					<input type="text" onkeyup="key_uplift()" name="" class="nill_" id="rental_" value="" placeholder="总额"/>
+					<input type="text" onkeyup="key_uplift()" name="" class="nill_" id="already_" value="" placeholder="已用"/>
+					<input type="text" onkeyup="key_uplift()" name="" class="nill_" id="usable_" value="" placeholder="可用"/>
+					<input type="text" onkeyup="key_uplift()" name="" class="nill_" id="shouldRepay_" value="" placeholder="应还"/>
+					<input type="text" onkeyup="key_uplift()" name="" class="nill_" id="date_" value="" placeholder="还款日期"/>
+					<!--提示-->
+					<div class="reminder"></div>
+				</div>
+				<!--确认取消按-->
+				<div class="addition">
+					<input type="button" class="affirm" value="确认添加" />
+					<input type="button" class="abolish"  value="取消添加" />
+				</div>
+			</div>
+	</body>
+	<script type="text/javascript">
+	$(function() {
+		//选中准备要删除的数据
+		var prepare_rm = ""
+
+		//增加数据
+		$('.increase').click(function() {
+			$('.set_window').show()
+
+		})
+		$('.count_html').click(function() {
+			window.location.href = "index.html"
+		})
+		//确认添加
+		$('.affirm').click(function() {
+			var sethtml = []
+			//提取
+			var set_date = localStorage.getItem("set_data")
+			console.log(set_date)
+			if(set_date != null&&set_date != "") {
+				sethtml.push(set_date)
+			console.log(112)
+				
+			}
+			var nane_ = $('#nane_').val();
+			var rental_ = $('#rental_').val();
+			var already_ = $('#already_').val();
+			var usable_ = $('#usable_').val();
+			var shouldRepay_ = $('#shouldRepay_').val();
+			var date_ = $('#date_').val();
+			if(nane_ != "" && rental_ != "" && already_ != "" && usable_ != "" && shouldRepay_ != "" && date_ != "") {
+				var html_ = '<ul>' +
+					'<li>' + nane_ + '</li>' +
+					'<li>' + rental_ + '</li>' +
+					'<li>' + already_ + '</li>' +
+					'<li>' + usable_ + '</li>' +
+					'<li>' + shouldRepay_ + '</li>' +
+					'<li class="set_remove">' + date_ + '</li>' +
+					'</ul>';
+				console.log(html_)
+				sethtml.push(html_)
+				console.log(sethtml,"ttt")
+				
+				localStorage.setItem("set_data", sethtml);
+				//					//提取
+				//				var set_date = localStorage.getItem("date")
+				//更新表格
+				set_update()
+				$('.set_window').hide()
+				$('.nill_').val("")
+
+			} else {
+				$('.reminder').html("请把数据填完整！")
+			}
+		})
+		//取消添加
+		$('.abolish').click(function() {
+			$('.set_window').hide()
+		})
+		//删除
+		$('.set_box').on("click",".set_remove",function(index){
+			var index_ = $(this).index(".set_remove")
+			//准备要删除的数据
+			prepare_rm = index_;
+			$(".set_box .set_remove").eq(index_).addClass("rm_ba")
+			console.log(index_)
+			$('.promptBox').show()
+
+		})
+		//确认删除
+		$('.set_ok').click(function(){
+			//删除后再存储
+			var gmfset = []
+			//提取数据
+			var set_date = localStorage.getItem("set_data")
+			console.log(set_date,"刚拿出来的数据")
+			var set_rm = set_date.split(",")
+			console.log(set_rm,"分开的数据")
+			console.log(prepare_rm,"要删除的下标")
+//			var ww = set_rm.slice(prepare_rm,prepare_rm+1)
+			var ww = set_rm.slice(0,prepare_rm)
+			if(ww!=""){
+				gmfset.push(ww)
+			}
+			console.log(gmfset,"下标前的数据")
+			console.log(ww)
+			var ww = set_rm.slice(prepare_rm+1)
+			if(ww!=""){
+				gmfset.push(ww)
+			}
+			console.log(gmfset,"下标后的数据")
+			
+			localStorage.setItem("set_data", gmfset)
+//			console.log(ww)
+			$('.promptBox').hide()
+			set_update()
+			var set_date = localStorage.getItem("set_data")
+			console.log(set_date,"刚拿出来的数据66")
+		})
+		//取消删除
+		$('.set_no').click(function(){
+			$('.promptBox').hide()
+			$(".set_box .set_remove").removeClass("rm_ba")
+		})
+		
+		//更新表格
+		set_update()
+
+	})
+
+	//更新表格
+	function set_update() {
+		//提取
+		var set_date = localStorage.getItem("set_data")
+		console.log(set_date)
+		if(set_date != null) {
+			var set_out = set_date.indexOf(",")
+			console.log(set_out)
+			if(set_out == -1) {
+				console.log(set_date)
+				$('.set_box').html(set_date)
+			} else {
+				$('.set_box').html("")
+
+				var set_out = set_date.split(",")
+				for(var i = 0; i < set_out.length; i++) {
+					var html_ = set_out[i]
+					$('.set_box').append(html_)
+				}
+			}
+		}
+	}
+
+	//键盘抬起
+	function key_uplift() {
+		$('.reminder').html("")
+	}
+</script>
+</html>

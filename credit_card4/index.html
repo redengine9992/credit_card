@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+		<title>计算页面</title>
+		<link rel="stylesheet" type="text/css" href="css/css.css" />
+		<link rel="stylesheet" type="text/css" href="css/animate.min.css" />
+		<script src="js/jquery-3.3.1.js" type="text/javascript" charset="utf-8"></script>
+		
+	</head>
+
+	<body>
+		<!--内容-->
+		<div class="content">
+			<!--头部-->
+			<h2 class="header">11</h2>
+			<br />
+			<div class="content_1">
+				<ul>
+					<li>交通：</li>
+					<li><input type="text" class="money1" onkeyup="num(this)" value="" placeholder="金额" />￥</li>
+					<li><input type="text" class="day_1" onkeyup="num(this),count()" value="" placeholder="剩余天数" />天</li>
+					<li>/等于<div class="right_li  epual_to1">---</div></li>
+					<li><div class="eliminate">清除</div></li>
+				</ul>
+				<ul>
+					<li>招商：</li>
+					<li><input type="text" class="money2" onkeyup="num(this)" value="" placeholder="金额" />￥</li>
+					<li><input type="text" class="day_2" onkeyup="num(this),count()" value="" placeholder="剩余天数" />天</li>
+					<li>/等于<div class="right_li  epual_to2">---</div></li>
+					<li><div class="eliminate">清除</div></li>
+				</ul>	
+				<ul>
+					<li>中信：</li>
+					<li><input type="text" class="money3" onkeyup="num(this)" value="" placeholder="金额" />￥</li>
+					<li><input type="text" class="day_3" onkeyup="num(this),count()" value="" placeholder="剩余天数" />天</li>
+					<li>/等于<div class="right_li  epual_to3">---</div></li>
+					<li><div class="eliminate">清除</div></li>
+				</ul>
+				<ul>
+					<li>广发：</li>
+					<li><input type="text" class="money4" onkeyup="num(this)" value="" placeholder="金额" />￥</li>
+					<li><input type="text" class="day_4" onkeyup="num(this),count()" value="" placeholder="剩余天数" />天</li>
+					<li>/等于<div class="right_li  epual_to4">---</div></li>
+					<li><div class="eliminate">清除</div></li>
+				</ul>	
+				<ul>
+					<li>兴业：</li>
+					<li><input type="text" class="money5" onkeyup="num(this)" value="" placeholder="金额" />￥</li>
+					<li><input type="text" class="day_5" onkeyup="num(this),count()" value="" placeholder="剩余天数" />天</li>
+					<li>/等于<div class="right_li  epual_to5">---</div></li>
+					<li><div class="eliminate">清除</div></li>
+				</ul>	
+				
+				 
+				<!--按扭-->
+				<div class="button_two">
+					<div id="affirm" class="buttons">确认</div>
+					<div id="reset" class="buttons">重置</div>
+				</div>
+				<!--每天的总额-->
+			</div>
+			<div class="rental_box">
+				<input type="text" class="nnde" onkeyup="num(this),count()"  value="" placeholder="已有" />
+				 每日刷卡额度:<span class="rental"></span><br />
+				<input type="text" class="remark" name="" id="" value="" placeholder="备注" /><span class="record">记录</span>
+			</div>
+			<!--从cookies获取数据-->
+			<div class="datas">
+				<ul>
+					<li class="reco">记录为空</li>
+				</ul>
+			</div>
+			<!--显示卡名-->
+			<div class="displays">
+				<ul class="box">
+					<li>名字</li>
+				</ul>
+				<ul class="box2">
+					<li class="on1">数量</li>
+				</ul>
+			<input type="button" class="suaa set_html" value="设置页面" />
+			<input type="button" class="suaa " value="++页面" />
+			</div>
+		</div>
+	</body>
+	<script src="js/js.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		$(function() {
+
+			//存储数组
+			var dates = []
+			//记数
+			var numeration = 0;
+			//判断不能记录相同金额/不能多次点击
+			var alike = 0;
+			//更新记录
+			renewal()
+			
+			//调节滚动条位置
+			 adjust()
+			 
+			//更新记录
+			function renewal() {
+
+				//提取
+				var get_date = localStorage.getItem("date")
+				//				console.log(get_date)
+				if(get_date != null) {
+					//截取
+					var cut_out = get_date.indexOf(",")
+					if(cut_out == -1) {
+						//console.log("走一")
+						var html_ = '<li class="reco">记录</li>';
+						html_ += '<li>' + get_date + '</li>'
+						$('.datas ul').html(html_)
+						dates[0] = get_date;
+						numeration = 1;
+					} else {
+						//console.log("走二")
+
+						var html_ = '<li class="reco">记录</li>';
+						var cut_out = get_date.split(",")
+						//console.log(cut_out)
+						for(var i = 0; i < cut_out.length; i++) {
+							dates[i] = cut_out[i]
+							html_ += '<li>' + cut_out[i] + '</li>';
+						}
+						numeration = i;
+						$('.datas ul').html(html_)
+
+					}
+				}
+
+			}
+			//记录
+			$('.record').click(function() {
+				//总值total_value
+				var total_value = $('.rental').html();
+				if(total_value == 0 || total_value == "" || total_value == Infinity || alike == total_value) {
+					alert("记录失败！请重新输入")
+				} else {
+					alike = total_value
+					var myDate = new Date; //时间
+//					var myDate = new Date("2019-01-15");
+					var year = myDate.getFullYear() //年
+					//				console.log(year)
+					var month = myDate.getMonth() //月
+					var month_1 = month+1;
+					var days = myDate.getDate() //日
+					var hour = myDate.getHours() //时
+					var minutes = myDate.getMinutes() //分
+					var second = myDate.getSeconds() //秒
+					var remarkval = $('.remark').val() //备注
+					if(remarkval == "") {
+						remarkval = "无"
+					}
+					var wqvb = year + '年' + month_1 + '月' + days + '日' + hour + '时' + minutes + '分' + second + '秒<br />' + '每日至少刷卡' + '<span class="color_">' + total_value + '</span>元/备注：<span class="color_">' + remarkval + '</span>';
+					dates[numeration] = wqvb
+					//存储
+					localStorage.setItem("date", dates);
+					localStorage.setItem("total_value", total_value);
+					numeration++;
+					$('.box2 .on1').siblings().remove()
+					
+					//调节滚动条位置
+					adjust()
+					//更新记录
+					renewal()
+					//显示当前可用卡
+					usable_stuck()
+				}
+			})
+
+			var name1 = ["招商", "兴业", "名字3", "交通", "广发"];
+
+//			var myDate = new Date();
+			var myDate = new Date("2019-06-13");
+
+			var days = myDate.getDate()
+			console.log(days)
+			setTimeout(function() {
+				if(days >= 3 && days <= 17) {
+					$('.box').append('<li style="background: red;color: #fff;">' + name1[0] + '</li>')
+				}
+			}, 100)
+			setTimeout(function() {
+				if(days >= 7 && days <= 20) {
+					$('.box').append('<li style="background: blue;color: #fff;">' + name1[1] + '</li>')
+				}
+			}, 400)
+			setTimeout(function() {
+				if(days >= 20 || days <= 4) {
+					$('.box').append('<li style="background: darkorange;color: #fff;">' + name1[2] + '</li>')
+				}
+			}, 700)
+			setTimeout(function() {
+				if(days >= 13 && days <= 27) {
+					$('.box').append('<li style="background: #ff0097;color: #fff;">' + name1[3] + '</li>')
+				}
+			}, 1000)
+			setTimeout(function() {
+				if(days >= 22 || days <= 5) {
+					$('.box').append('<li style="background: yellowgreen;color: #fff;">' + name1[4] + '</li>')
+				}
+			}, 1300)
+			
+				//显示当前可用卡
+			usable_stuck()
+			function usable_stuck(){
+				setTimeout(function(){
+					var total_value = localStorage.getItem("total_value")
+				console.log(total_value)
+				if(total_value != null) {
+					var lis = $('.box li').length;
+					//  可用卡数
+					var li_l = lis - 1;
+					//金额除可用卡数=每个卡要刷额度
+					var ovjg = total_value / li_l;
+//					console.log(ovjg)
+					var lll = ovjg.toString()//数字转字符串
+					console.log(lll)
+//					var lll = "0.22222"
+					var jgrgx = lll.indexOf(".")//找到点的位置
+//					console.log(jgrgx)
+					var aa = jgrgx+3;//点的位置加3.再截取、保留后两位
+					var rr = lll.slice(0,aa)
+					console.log(rr);
+
+					for(var i = 0; i < li_l; i++) {
+						$('.box2').append('<li>' + rr + '</li>')
+
+					}
+				}
+				},1300)
+				
+			}
+			//调节滚动条位置
+			function adjust(){
+				setTimeout(function(){
+				var dahei = $('.datas ul').height()
+				console.log(dahei,"滚动条位置")
+				$('.datas').scrollTop(dahei) 
+				}, 0)
+			
+			}		
+			//跳转设置页面
+			$('.set_html').click(function(){
+				window.location.href = "indexset.html"
+			})
+
+		})
+	</script>
+<script src="js/setRootRem750.js" type="text/javascript" charset="utf-8"></script>
+</html>
