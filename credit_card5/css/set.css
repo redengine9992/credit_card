@@ -75,15 +75,23 @@ body{
 }
 
 /*删除与否提示框*/
-.promptBox{
+.prompt_sagg{
+	width: 100%;
+	height: 100%;
 	position: relative;
+	top: 0;
+	left: 0;
+	display: none;
+}
+.promptBox{
+	position: absolute;
 	top: 36%;
 	left: 50%;
 	margin-left: -40%;
 	width: 80%;
 	height: 2rem;
     background: rgba(0, 0, 0, 0.6);
-	display: none;
+	
 }
 .promptBox p{
 	width: 100%;
@@ -154,7 +162,7 @@ body{
     width: 5.75rem;
     height: 2rem;
     /*background: red;*/
-    margin: 2rem auto;
+    margin: 1rem auto;
 }
 .addition>input{
     width: 2.2rem;
@@ -180,7 +188,7 @@ body{
 	width: 7.5rem;
 	height: 100%;
 	background: #fff;
-	padding: 2rem 0;
+	padding: 4rem 0;
 	position: absolute;
 	top: 0;
 	left: 50%;
