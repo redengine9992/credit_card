@@ -1,0 +1,217 @@
+*{
+	margin: 0;padding: 0;
+}
+.content{
+	width: 7.5rem;
+	font-size: .3rem;
+	margin: auto;
+	font-size: .3rem;
+}
+.header{
+	text-align: center;
+	margin-top: .2rem;
+	background: skyblue;
+}
+
+.content_1{
+	width: 100%;
+	margin: auto;
+	/*background: yellow;*/
+}
+.content_1>ul{
+    width: 100%;
+    height: 0.5rem;
+    /*background: red;*/
+    margin-bottom: 0.3rem;
+}
+.content_1>ul>li{
+	width: 1.6rem;
+	float: left;
+	line-height: 0.5rem;
+	text-align: center;
+}
+.content_1>ul>li>input{
+	width: 1.1rem;
+	text-align: center;
+	
+}
+.content_1>ul>li:nth-of-type(1){
+	margin-left: 0;
+	width: 1rem;
+}
+.content_1>ul>li:nth-of-type(4){
+	width: 2rem;
+}
+.content_1>ul>li:nth-of-type(5){
+	margin-left: .1rem;
+	width: .9rem;
+}
+.right_li{
+	width: 1.2rem;
+	float: right;
+	/*background: green;*/
+	overflow: hidden;
+}
+
+
+/*按扭样式*/
+.button_two{
+	width: 2.7rem;
+	 height: .43rem;
+	 /*background: red;*/
+	 margin:.2rem auto;
+}
+.buttons{
+    width: .88rem;
+    height: .43rem;
+    background: #0688e6;
+    color: #fff;
+    text-align: center;
+    line-height: .43rem;
+    float: left;
+    margin-left: .3rem;
+    cursor: pointer;
+}
+/*清除按扭*/
+.eliminate{
+	float: right;
+	 width: .88rem;
+    height: .5rem;
+    background: #0688e6;
+    color: #fff;
+    text-align: center;
+    line-height: .5rem;
+     cursor: pointer;
+}
+/*总额*/
+.rental_box{
+	width: 100%;
+	height: 1.54rem;
+	line-height: .54rem;
+	position: relative;
+	/*background: red;*/
+}
+.rental{
+	color: red;
+}
+/*备注*/
+.remark{
+    width: 4.29rem;
+    height: .53rem;
+    font-size: .3rem;
+}
+/*记录按扭*/
+.record{
+    float: right;
+    width: .88rem;
+    height: .55rem;
+    background: #0688e6;
+    color: #fff;
+    text-align: center;
+    line-height: .55rem;
+    cursor: pointer;
+    margin-right: .3rem;
+}
+
+
+
+/*----------------------------------------------*/
+li{
+	list-style: none;
+}
+
+/*从cookies获取数据 box*/
+.datas{
+	width: 100%;
+	max-height: 3.4rem;
+	background: skyblue;
+	margin: auto;
+	padding: .06rem .06rem .2rem;
+	box-sizing: border-box;
+	overflow-y: scroll;
+	position: relative;
+}
+.datas>ul>li{
+	margin-top: .1rem;
+	background: yellow;
+	padding: .08rem .07rem;
+}
+.color_{
+	color: red;
+}
+.reco{
+
+	text-align: center;
+	color: red;
+	
+}
+
+
+.box{
+	width: 7rem;
+	height: .5rem;
+	/*background: red;*/
+	margin: .2rem auto 0;
+	border: 1px solid royalblue;
+}
+
+.box li,.box2 li {
+	float: left;
+	width: 16.6%;
+	height: 100%;
+	text-align: center;
+	line-height: .5rem;
+	background: skyblue;
+	border-radius: 23px;
+	margin-right: 10px;
+	animation: fadeInRight 1s 0s both;
+}
+
+/*.box li:nth-of-type(1) {
+	animation: fadeInRight 0s 0s both;
+}*/
+.box2{
+	width: 7rem;
+	height: .5rem;
+	/*background: red;*/
+	margin: .2rem auto;
+	border: 1px solid royalblue;
+}
+
+.nnde{
+    width: 2rem;
+    height: 0.59rem;
+    font-size: .29rem;
+    text-align: center;
+    margin-bottom: .2rem;
+}
+/*显示卡名*/
+.displays{
+	width: 100%;
+	height: 2rem;
+	/*background: red;*/
+}
+
+
+.suaa{
+	width: 2.2rem;
+    height: 0.6rem;
+    margin-left: 0.3rem;
+    background: deepskyblue;
+    border: none;
+    color: #fff;
+    font-size: .4rem;
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
