@@ -68,6 +68,12 @@
 	</body>
 	<script type="text/javascript">
 	$(function() {
+		var myDate = new Date; //时间
+		var month = myDate.getMonth() //月
+		var month_1 = month+1;
+		var days = myDate.getDate() //日
+		$('title').html("设置页面:当前时间"+month_1+"月"+days+"日")
+		
 		//选中准备要删除的数据
 		var prepare_rm = ""
 
