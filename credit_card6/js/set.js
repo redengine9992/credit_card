@@ -25,7 +25,7 @@ $(function() {
 		})
 		//跳转页面
 		$('.count_html').click(function() {
-			window.location.href = "index1.html"
+			window.location.href = "index.html"
 		})
 		//确认添加
 		$('.affirm').click(function() {
