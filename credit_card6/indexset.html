@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>设置页面</title>
+		<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+		<link rel="stylesheet" type="text/css" href="css/set.css"/>
+		<script src="js/jquery-3.3.1.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/setRootRem750.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/set.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div class="set_content">
+			<div class="set">
+				<ul>
+					<li>名字</li>
+					<li>多少钱</li>
+					<li>可用</li>
+					<li>已用</li>
+					<li>应还</li>
+					<li>日期</li>
+				</ul>
+				<div class="set_box">
+					<!--<ul>
+						<li>名字1</li>
+						<li>30000</li>
+						<li>0</li>
+						<li>30000</li>
+						<li>1234</li>
+						<li class="set_remove">6/7</li>
+					</ul>-->
+				</div>
+			</div>
+			
+			<input type="button" class="increase suaa" value="增加数据" />
+			<input type="button" class="count_html suaa" value="计算页面" />
+			<!--删除与否提示框-->
+			<div class="prompt_sagg">
+				<div class="promptBox">
+					<p>确认删除这条数据吗？</p>
+					<div class="set_okno set_ok">删除</div>
+					<div class="set_okno set_no">取消</div>
+				</div>
+			</div>
+			
+		</div>
+			<!--增加数据弹窗-->
+			<div class="add_window">
+				<div class="set_input">
+					<input type="text" onkeyup="key_uplift()" name="" class="nill_" id="nane_" value="" placeholder="名称"/>
+					<input type="text" onkeyup="key_uplift()" name="" class="nill_" id="rental_" readonly="readonly" value="" placeholder="总额"/>
+					<input type="text" onkeyup="key_uplift(),key_already(),num(this)" name="" class="nill_" id="already_" value="" placeholder="可用"/>
+					<input type="text" onkeyup="key_uplift()" name="" class="nill_" id="usable_" readonly="readonly" value="" placeholder="已用"/>
+					<input type="text" onkeyup="key_uplift(),num(this)" name="" class="nill_" id="shouldRepay_" value="" placeholder="应还"/>
+					<input type="text" onkeyup="key_uplift()" name="" class="nill_" id="date_" readonly="readonly" value="" placeholder="还款日期"/>
+					<!--提示-->
+					<div class="reminder"></div>
+				</div>
+				<!--确认取消按-->
+				<div class="addition">
+					<input type="button" class="affirm" value="确认添加" />
+					<input type="button" class="abolish"  value="取消添加" />
+				</div>
+				<!--自动填充窗-->
+				<div class="fill">
+					<p style="width: 100%;text-align: center;">请选择卡片</p><br /><br />
+					<input type="button"  value="民生" class="hhuname" />
+
+					<input type="button"  value="兴业" class="hhuname" />
+
+					<input type="button"  value="交通" class="hhuname" />
+
+					<input type="button"  value="招商" class="hhuname" />
+
+					<input type="button"  value="中信" class="hhuname" />
+
+					<input type="button"  value="广发" class="hhuname" />
+
+				</div>
+			</div>
+			<!--设置窗口-->
+			<div class="set_window">
+				<div class="set_left">
+					<ul class="rm_ul">
+						<li class="rm_all_data">清除全部数据</li>
+						<li>等待开发</li>
+						<li>等待开发</li>
+						<li>等待开发</li>
+					<!--返回-->
+					<div class="go_back">返回</div>
+					</ul>
+				</div>
+				
+			</div>
+			<!--删除提示-->
+			<p class="mmbw_rjfi">清除成功！</p>
+	</body>
+	<script type="text/javascript">
+	
+	$(function(){
+			//返回	
+			$('.go_back').click(function(){
+				$(".rm_ul").hide()
+				$(".set_window").css('width','0')
+			})
+			
+			//删除所有数据
+			$('.rm_all_data').click(function(){
+				//删除所有数据
+				localStorage.clear()
+				$(".rm_ul").hide()
+				$(".set_window").css('width','0')
+//				var html_ = ''
+				$('.mmbw_rjfi').show()
+				setTimeout(function(){
+					window.location.reload()//刷新当前页面.
+				},1500)
+			})
+			$("body").on("touchstart", function(e) {
+			// e.preventDefault();
+			 startX = e.originalEvent.changedTouches[0].pageX,
+			 startY = e.originalEvent.changedTouches[0].pageY;
+//			console.log(startX)
+//			console.log(startY)
+			});
+			$("body").on("touchmove", function(e) {
+			// e.preventDefault();
+			 moveEndX = e.originalEvent.changedTouches[0].pageX,
+			 moveEndY = e.originalEvent.changedTouches[0].pageY,
+//			console.log(moveEndX)
+//			console.log(moveEndY)
+			 X = moveEndX - startX,
+			 Y = moveEndY - startY;
+//			console.log(X)
+//			console.log(Y)
+			   
+			 if ( Math.abs(X) > Math.abs(Y) && X > 0 ) {
+//			  从左向右滑动
+//				$('.set_window').fadeIn(1000)
+				$(".set_window").animate({
+					width:"100%",
+				},200,"linear",function(){
+					//运动后做什么
+					$('.rm_ul').show()
+				});
+			 }
+			 else if ( Math.abs(X) > Math.abs(Y) && X < 0 ) {
+//			  从右向左滑动
+			 }
+			 else if ( Math.abs(Y) > Math.abs(X) && Y > 0) {
+//			  alert("top 2 bottom");
+			 }
+			 else if ( Math.abs(Y) > Math.abs(X) && Y < 0 ) {
+//			  alert("bottom 2 top");
+			 }
+			 else{
+			  alert("just touch");
+			 }
+			});
+		})
+	
+	
+	
+	
+	
+	</script>
+</html>
