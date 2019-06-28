@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+		<title>计算页面</title>
+		<link rel="stylesheet" type="text/css" href="css/css.css" />
+		<link rel="stylesheet" type="text/css" href="css/animate.min.css" />
+		<script src="js/jquery-3.3.1.js" type="text/javascript" charset="utf-8"></script>
+		
+	</head>
+
+	<body>
+		<!--内容-->
+		<div class="content">
+			<!--头部-->
+			<h2 class="header">wqvbka</h2>
+			<br />
+				<!--每天的总额-->
+			<div class="rental_box">
+				<span class="spsuaa">已有：</span><input type="text" class="nnde already" onkeyup="num(this),count()"  value=""  /><br />
+				<span class="spsuaa">应还：</span><input type="text" class="nnde should_repay"value="" readonly='readonly' /><br />
+				<span class="spsuaa">天数：</span><input type="text" class="nnde dayss" onkeyup="num(this),count()"  value="" readonly='readonly'  placeholder="剩余天数"/><br />
+				<span class="spsuaa"> 每日刷卡额度:</span><span class="rental"></span><br />
+				<input type="text" class="remark" name="" id="" value="" placeholder="备注" /><span class="record">记录</span>
+			</div>
+			<!--从cookies获取数据-->
+			<div class="datas">
+				<ul>
+					<li class="reco">记录为空</li>
+				</ul>
+			</div>
+			<!--显示卡名-->
+			<div class="displays">
+				<ul class="box">
+					<li>名字</li>
+				</ul>
+				<ul class="box2">
+					<li class="on1">数量</li>
+				</ul>
+			<input type="button" class="suaa set_html" value="设置页面" />
+			<input type="button" class="suaa " value="++页面" />
+			</div>
+		</div>
+	</body>
+	<script src="js/js.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/setRootRem750.js" type="text/javascript" charset="utf-8"></script>
+</html>
